@@ -1,7 +1,7 @@
 #include "Map.h"
+#include "Queue.h"
 #include <algorithm>
 #include <cstdlib>
-#include <queue>
 #include <random>
 #include <sstream>
 
@@ -205,16 +205,15 @@ std::vector<Position> Map::findPath(Position aStart, Position aGoal, bool aAllow
 
     bool visited[HEIGHT][WIDTH]{};
     Position parent[HEIGHT][WIDTH]{};
-    std::queue<Position> open;
-    open.push(aStart);
+    Queue<Position> open(WIDTH * HEIGHT);
+    open.enqueue(aStart);
     visited[aStart.y][aStart.x] = true;
 
     constexpr int dx[] = { 1, -1, 0, 0 };
     constexpr int dy[] = { 0, 0, 1, -1 };
-    while (!open.empty())
+    while (!open.isEmpty())
     {
-        Position current = open.front();
-        open.pop();
+        Position current = open.dequeue();
         if (current.x == aGoal.x && current.y == aGoal.y) break;
 
         for (int direction = 0; direction < 4; ++direction)
@@ -234,7 +233,7 @@ std::vector<Position> Map::findPath(Position aStart, Position aGoal, bool aAllow
 
             visited[next.y][next.x] = true;
             parent[next.y][next.x] = current;
-            open.push(next);
+            open.enqueue(next);
         }
     }
 

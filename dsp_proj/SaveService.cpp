@@ -113,7 +113,8 @@ bool SaveService::loadGame(const std::string& aFilename,
     if (!(inFile >> label >> tDrill >> tGen >> tTurret) || label != "TECH") return false;
     if (!(inFile >> label >> buildingCount) || label != "BUILDINGS") return false;
 
-    if (coreHP < 0 || coreHP > aMap.getMaxCoreHP() || savedWave < 0 || savedWave > 4 ||
+    if (coreHP < 0 || coreHP > aMap.getMaxCoreHP() || savedWave < 0 ||
+        savedWave > static_cast<int>(sizeof(WaveConfig::Enemies) / sizeof(WaveConfig::Enemies[0])) ||
         copper < 0 || coal < 0 || power < 0 ||
         (tDrill != 0 && tDrill != 1) || (tGen != 0 && tGen != 1) ||
         (tTurret != 0 && tTurret != 1) || tDrill != 1 ||

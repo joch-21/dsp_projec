@@ -1,5 +1,6 @@
 ﻿  Building.cpp
   BuildingVisitor.cpp
+  CommandManager.cpp
   Game.cpp
   GameUI.cpp
   Main.cpp

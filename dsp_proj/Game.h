@@ -15,7 +15,7 @@ namespace GameConfig
     inline constexpr int StartingCopper = 65;
     inline constexpr int StartingCoal = 10;
     inline constexpr int StartingPower = 0;
-    inline constexpr unsigned int ProductionIntervalMilliseconds = 2000;
+    inline constexpr unsigned int ProductionIntervalMilliseconds = 1000;
 }
 
 class Game

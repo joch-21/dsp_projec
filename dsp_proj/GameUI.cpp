@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cmath>
 #include <filesystem>
+#include <sstream>
 #include <stdexcept>
 
 namespace
@@ -48,7 +49,7 @@ GameUI::GameUI(Game& aGame)
     fWaveBeamTicks(0), fWaveVisualCoreHP(0), fWaveImpactTicks(0), fWaveWaveNumber(0),
     fElapsedMilliseconds(0), fProductionAccumulatorMilliseconds(0),
     fWaveCountdownMilliseconds(GameUIConfig::WaveSpawnIntervalMilliseconds),
-    fWaveActive(false), fPaused(false)
+    fWaveActive(false), fPaused(false), fShowDiagnostics(false)
 {
     fWindow.setFramerateLimit(60);
     // Visual Studio launches from the output directory, which may differ from
@@ -577,6 +578,7 @@ void GameUI::render()
     drawBuildings();
     drawBattle();
     drawSidePanel();
+    if (fShowDiagnostics) drawDiagnostics();
 
     sf::RectangleShape messagePanel({ 944.f, 42.f });
     messagePanel.setPosition({ 36.f, 680.f });
@@ -586,6 +588,73 @@ void GameUI::render()
     fWindow.draw(messagePanel);
     drawText(fStatusMessage, 48.f, 692.f, sf::Color(225, 230, 240), 13);
     fWindow.display();
+}
+
+void GameUI::drawDiagnostics()
+{
+    sf::RectangleShape overlay({ 930.f, 600.f });
+    overlay.setPosition({ 45.f, 75.f });
+    overlay.setFillColor(sf::Color(16, 20, 28, 245));
+    overlay.setOutlineColor(sf::Color(120, 160, 205));
+    overlay.setOutlineThickness(2.f);
+    fWindow.draw(overlay);
+
+    drawText("DATA STRUCTURE INSPECTOR  |  Press F1 to close", 65.f, 90.f,
+        sf::Color(255, 205, 115), 20);
+    drawText("Singly linked hash chains (ResourceStore):", 65.f, 130.f,
+        sf::Color(150, 210, 255), 14);
+
+    const std::string buckets = fGame.getResources().getDebugLayout();
+    std::istringstream bucketStream(buckets);
+    std::string line;
+    float y = 154.f;
+    while (std::getline(bucketStream, line))
+    {
+        drawText(line, 70.f, y, sf::Color(220, 225, 235), 12);
+        y += 18.f;
+    }
+
+    ResourceStore collisionDemo;
+    collisionDemo.set("A", 1);
+    collisionDemo.set("H", 2); // A and H hash to the same bucket; the chain uses SLL nodes.
+    drawText("SLL collision example (A and H share one bucket):", 65.f, y + 4.f,
+        sf::Color(150, 210, 255), 12);
+    drawText(collisionDemo.getDebugLayout(), 70.f, y + 22.f,
+        sf::Color(220, 225, 235), 11);
+
+    drawText("Map grid:", 65.f, 300.f, sf::Color(150, 210, 255), 14);
+    std::istringstream gridStream(fGame.getMap().getGridDisplay());
+    y = 324.f;
+    while (std::getline(gridStream, line))
+    {
+        drawText(line, 70.f, y, sf::Color(220, 225, 235), 12);
+        y += 17.f;
+    }
+
+    drawText("Tech tree (BTree):", 430.f, 130.f, sf::Color(150, 210, 255), 14);
+    std::istringstream techStream(fGame.getMap().getTechTreeDisplay());
+    y = 154.f;
+    while (std::getline(techStream, line))
+    {
+        drawText(line, 435.f, y, sf::Color(220, 225, 235), 12);
+        y += 18.f;
+    }
+
+    drawText("Buildings (polymorphism + Visitor):", 430.f, 280.f,
+        sf::Color(150, 210, 255), 14);
+    std::istringstream buildingStream(fGame.getBuildingReport());
+    y = 304.f;
+    while (std::getline(buildingStream, line) && y < 565.f)
+    {
+        drawText(line, 435.f, y, sf::Color(220, 225, 235), 11);
+        y += 16.f;
+    }
+
+    drawText("Queue: pending waves = " +
+        std::to_string(fGame.getWaveManager().getRemainingWaveCount()) +
+        "   |   Stack: undo entries = " +
+        std::to_string(fGame.getCommandManager().getHistorySize()),
+        430.f, 580.f, sf::Color(255, 205, 115), 13);
 }
 
 void GameUI::drawGrid()
@@ -903,6 +972,11 @@ void GameUI::run()
             {
                 if (click->button == sf::Mouse::Button::Left)
                     handleMouseClick(click->position.x, click->position.y);
+            }
+            else if (const auto* key = event->getIf<sf::Event::KeyPressed>())
+            {
+                if (key->code == sf::Keyboard::Key::F1)
+                    fShowDiagnostics = !fShowDiagnostics;
             }
         }
 

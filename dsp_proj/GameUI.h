@@ -76,6 +76,7 @@ private:
     int fWaveCountdownMilliseconds;
     bool fWaveActive;
     bool fPaused;
+    bool fShowDiagnostics;
     std::string fWaveEnemyName;
 
     static constexpr int WINDOW_WIDTH = 1020;
@@ -94,6 +95,7 @@ private:
     void drawBuildings();
     void drawBattle();
     void drawSidePanel();
+    void drawDiagnostics();
     void drawText(const std::string& aText, float aX, float aY,
         sf::Color aColor, unsigned int aSize = 16);
     void drawButton(int aX, int aY, int aWidth, int aHeight, const std::string& aLabel,
