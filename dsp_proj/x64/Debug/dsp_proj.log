@@ -1,0 +1,14 @@
+﻿  Building.cpp
+  BuildingVisitor.cpp
+  Game.cpp
+  GameUI.cpp
+  Main.cpp
+  Map.cpp
+  SaveService.cpp
+  WaveManager.cpp
+  Generating Code...
+  dsp_proj.vcxproj -> C:\Users\User\source\repos\dsp_proj\x64\Debug\dsp_proj.exe
+          1 file(s) copied.
+          1 file(s) copied.
+          1 file(s) copied.
+          1 file(s) copied.

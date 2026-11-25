@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\ResourceStore.obj",
+            "outputs": [
+                "x64\\Debug\\ResourceStore.cpp.obj.dt.module.json",
+                "x64\\Debug\\ResourceStore.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

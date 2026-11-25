@@ -1,0 +1,28 @@
+MAP 10 8 1 2 9 7
+TILES
+.....CK...
+..........
+...K...C..
+....KC....
+.......CC.
+......C...
+..K.....KC
+....CK....
+CORE_HP 100
+WAVE 2
+RESOURCES 640 540 635
+TECH 1 1 1
+BUILDINGS 13
+Drill Copper 8 4 1 25
+Drill Coal 8 6 1 25
+Drill Copper 7 4 1 25
+Drill Copper 6 5 1 25
+Drill Coal 4 3 1 25
+Drill Copper 5 3 1 25
+Drill Coal 3 2 1 25
+Generator None 5 4 1 25
+Generator None 6 4 1 25
+Turret None 6 6 1 25
+Turret None 8 3 2 30
+Turret None 9 4 1 25
+Turret None 2 5 3 35
