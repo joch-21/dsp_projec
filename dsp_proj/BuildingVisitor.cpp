@@ -4,9 +4,7 @@
 #include "ResourceStore.h"
 #include <sstream>
 
-// ============================================================================
-// BuildingReportVisitor Implementation
-// ============================================================================
+// BuildingReportVisitor 
 BuildingReportVisitor::BuildingReportVisitor() : fReport(""), fCount(0)
 {
 }
@@ -58,9 +56,8 @@ void BuildingReportVisitor::visit(Turret& aTurret)
     fReport += oss.str();
 }
 
-// ============================================================================
-// ProductionSummaryVisitor Implementation
-// ============================================================================
+
+// ProductionSummaryVisitor Implementation 
 ProductionSummaryVisitor::ProductionSummaryVisitor(ResourceStore& aResources)
     : fResources(aResources),
     fCopperMined(0),

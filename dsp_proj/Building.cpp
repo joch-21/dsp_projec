@@ -1,9 +1,7 @@
 #include "Building.h"
 #include "BuildingVisitor.h"
 
-// ============================================================================
-// Building Base Class Implementation
-// ============================================================================
+// base class impelemtation
 Building::Building(const std::string& aName, int aCost, int aMaxHP, Position aPos)
     : fName(aName), fCost(aCost), fHP(aMaxHP), fMaxHP(aMaxHP), fLevel(1), fPos(aPos)
 {
@@ -52,9 +50,7 @@ void Building::upgrade()
     fHP = fMaxHP;
 }
 
-// ============================================================================
-// Drill Implementation
-// ============================================================================
+//drill
 Drill::Drill(Position aPos, const std::string& aTargetOre)
     : Building(aTargetOre + " Drill", BuildingConfig::DrillCost,
         BuildingConfig::DrillHitPoints, aPos),
@@ -79,9 +75,7 @@ void Drill::accept(BuildingVisitor& aVisitor)
     aVisitor.visit(*this);
 }
 
-// ============================================================================
-// Generator Implementation
-// ============================================================================
+//generator
 Generator::Generator(Position aPos)
     : Building(BuildingConfig::GeneratorName, BuildingConfig::GeneratorCost,
         BuildingConfig::GeneratorHitPoints, aPos),
@@ -107,9 +101,7 @@ void Generator::accept(BuildingVisitor& aVisitor)
     aVisitor.visit(*this);
 }
 
-// ============================================================================
-// Turret Implementation
-// ============================================================================
+// turret
 Turret::Turret(Position aPos)
     : Building(BuildingConfig::TurretName, BuildingConfig::TurretCost,
         BuildingConfig::TurretHitPoints, aPos),

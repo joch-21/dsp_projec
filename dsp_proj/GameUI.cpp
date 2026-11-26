@@ -557,7 +557,7 @@ void GameUI::drawButton(int aX, int aY, int aWidth, int aHeight, const std::stri
 void GameUI::render()
 {
     fWindow.clear(Background);
-    drawText("COPPERLINE  |  SFML REAL-TIME STRATEGY", 36.f, 20.f, sf::Color(240, 165, 90), 23);
+    drawText("COPPERLINE", 36.f, 20.f, sf::Color(240, 165, 90), 23);
 
     const int elapsedSeconds = fElapsedMilliseconds / 1000;
     std::string status = "Time: " + std::to_string(elapsedSeconds / 60) + ":" +

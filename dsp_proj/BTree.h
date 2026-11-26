@@ -2,12 +2,6 @@
 #include <stdexcept>
 #include <string>
 
-// ============================================================================
-// Concept 3c: Binary Tree ADT (BTree<T> with Sentinel NIL & TreeVisitor<T>)
-// Follows COS30008 Lab 8 Part A & Lab 9 Part B design pattern.
-// Used in Copperline to represent the Mindustry-style Tech Tree (Core ->
-// Left: Resource/Power branch [Drill -> Generator], Right: Defense [Turret]).
-// ============================================================================
 template<class T>
 class TreeVisitor
 {
@@ -22,9 +16,9 @@ template<class T>
 class BTree
 {
 private:
-    T fKey;              // Stored value inside this tree node (owned by value for safe runtime use)
-    BTree<T>* fLeft;     // Left child branch
-    BTree<T>* fRight;    // Right child branch
+    T fKey;  // Stored value inside this tree node (owned by value for safe runtime use)
+    BTree<T>* fLeft; // Left child branch
+    BTree<T>* fRight; // Right child branch
 
     // Private default constructor used exclusively to initialize BTree<T>::NIL
     BTree() : fKey(T()), fLeft(&NIL), fRight(&NIL)
@@ -35,9 +29,7 @@ public:
     static BTree<T> NIL; // Sentinel representing an empty tree node
 
     // Public constructor: initializes node with key and sets children to NIL
-    BTree(const T& aKey) : fKey(aKey), fLeft(&NIL), fRight(&NIL)
-    {
-    }
+    BTree(const T& aKey) : fKey(aKey), fLeft(&NIL), fRight(&NIL) {}
 
     // Destructor: recursively deletes attached non-NIL child subtrees
     ~BTree()

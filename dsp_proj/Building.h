@@ -38,11 +38,6 @@ struct Position
 // Forward declaration to avoid circular #include with BuildingVisitor.h
 class BuildingVisitor;
 
-// ============================================================================
-// Concept 1a: Inheritance & Concept 1b: Polymorphism
-// Abstract base class for all Mindustry-style structures in Copperline.
-// Pure domain class: contains no console I/O for UI adaptability.
-// ============================================================================
 class Building
 {
 protected:
@@ -79,9 +74,7 @@ public:
     virtual void accept(BuildingVisitor& aVisitor) = 0;
 };
 
-// ============================================================================
-// Derived Class 1: Drill (Extracts Copper or Coal ore each turn)
-// ============================================================================
+// Derived Class 1: Drill (Extracts Copper or Coal ore each turn) 
 class Drill : public Building
 {
 private:
@@ -99,10 +92,8 @@ public:
     std::string getType() const override;
     void accept(BuildingVisitor& aVisitor) override;
 };
-
-// ============================================================================
-// Derived Class 2: Generator (Burns Coal to generate Power each turn)
-// ============================================================================
+ 
+// Derived Class - Generator (Burns Coal to generate Power each turn) 
 class Generator : public Building
 {
 private:
@@ -120,10 +111,8 @@ public:
     std::string getType() const override;
     void accept(BuildingVisitor& aVisitor) override;
 };
-
-// ============================================================================
-// Derived Class 3: Turret (Combines Power + Copper ammo to defend against waves)
-// ============================================================================
+ 
+// Derived Class 3: Turret (Combines Power + Copper ammo to defend against waves) 
 class Turret : public Building
 {
 private:

@@ -13,7 +13,7 @@ namespace GameUIConfig
     inline constexpr double EnemySpeedTilesPerSecond = 0.75;
     inline constexpr int EnemySpawnSpacingTicks = 12;
     inline constexpr int EnemyAttackCooldownTicks = 8;
-    inline constexpr const char* WindowTitle = "COPPERLINE - SFML RTS Puzzle";
+    inline constexpr const char* WindowTitle = "COPPERLINE - COS30008 Data Structure & Patterns Project (105811045)";
     inline constexpr const char* CopperLabel = "Copper";
     inline constexpr const char* CoalLabel = "Coal";
     inline constexpr const char* PowerLabel = "Power";
