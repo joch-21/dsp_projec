@@ -141,7 +141,7 @@ public:
         return &Result;
     }
 
-    // Depth-First Traversal using TreeVisitor (Lab 9 Part B)
+    // Depth-First Traversal using TreeVisitor 
     void traverseDepthFirst(const TreeVisitor<T>& aVisitor) const
     {
         if (!isEmpty())

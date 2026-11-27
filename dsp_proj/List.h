@@ -96,7 +96,7 @@ public:
         ++count;
     }
 
-    // Lab 6 compatibility alias for pushBack
+    //pushBack
     void push(const T& value)
     {
         pushBack(value);
@@ -161,7 +161,7 @@ public:
         return last->getValueRef();
     }
 
-    // Lab 7 Part C requirement: Random-access [] operator by index
+    // Random-access [] operator by index
     const T& operator[](int index) const
     {
         if (index < 0 || index >= count)
@@ -176,7 +176,7 @@ public:
         return curr->getValueRef();
     }
 
-    // Lab 7 Part C requirement: Remove a target element using its 0-based index
+    // Remove a target element using its 0-based index
     T removeAt(int index)
     {
         if (index < 0 || index >= count)
@@ -209,7 +209,7 @@ public:
         return Iterator(first);
     }
 
-    // Reverse iterator starting from the Back (Tail) - matches Lab 6 getIterator()
+    // Reverse iterator starting from the Back (Tail)  
     Iterator getIterator() const
     {
         return Iterator(last);

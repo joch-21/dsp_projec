@@ -6,7 +6,7 @@ class Queue
 {
 private:
     List<T> fElements; // Underlying Doubly-Linked List ADT container
-    int fMaxLimit; // Maximum capacity limit as required by Lab 7 Part C
+    int fMaxLimit; // Maximum capacity limit 
 
 public:
     // Constructor with default max element limit

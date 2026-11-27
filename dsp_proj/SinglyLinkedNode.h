@@ -32,7 +32,7 @@ public:
         return fValue;
     }
 
-    // Mutator for updating stored value (e.g., updating resource count in Hash Table)
+    // Mutator for updating stored value (updating resource count in Hash Table)
     void setValue(const DataType& aValue)
     {
         fValue = aValue;

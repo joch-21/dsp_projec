@@ -92,6 +92,6 @@ public:
     bool unlockTech(const std::string& aTechName, ResourceStore& aResources, std::string& outMessage);
     std::string getTechTreeDisplay() const;
 
-    // Returns ASCII grid representation for ConsoleUI (UI-independent)
+    // Returns ASCII grid representation 
     std::string getGridDisplay() const;
 };

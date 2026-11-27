@@ -55,7 +55,7 @@ public:
     bool save(std::string& outMsg) const;
     bool load(std::string& outMsg);
 
-    // Read-only state accessors for any UI layer (Console, 2D, GUI)
+    // Read-only state accessors for any UI layer 
     Map& getMap();
     const Map& getMap() const;
     ResourceStore& getResources();

@@ -107,7 +107,7 @@ void ProductionSummaryVisitor::visit(Generator& aGenerator)
         return;
     }
 
-    // Combination Mechanic Step 1: Burn Coal to produce Power
+    // Combination Mechanic, Burn Coal to produce Power
     if (fResources.spend("Coal", aGenerator.getCoalConsume()))
     {
         int power = aGenerator.getPowerOut();
@@ -122,6 +122,5 @@ void ProductionSummaryVisitor::visit(Generator& aGenerator)
 
 void ProductionSummaryVisitor::visit(Turret& aTurret)
 {
-    // Combat is real-time and handled by GameUI's live targeting loop.
     (void)aTurret;
 }
